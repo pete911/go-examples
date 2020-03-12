@@ -7,6 +7,9 @@ import (
 
 func TestDefaultFlags(t *testing.T) {
 
+	rollback := setInput(nil, nil)
+	defer rollback()
+
 	flags, err := ParseFlags()
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
@@ -95,6 +98,10 @@ func setInput(args []string, env map[string]string) (rollback func()) {
 		for k := range env {
 			os.Unsetenv(k)
 		}
+	}
+
+	if args == nil {
+		args = []string{"test"}
 	}
 
 	os.Args = args
