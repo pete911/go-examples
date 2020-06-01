@@ -11,6 +11,7 @@ import (
 type Flags struct {
 	Host string
 	Port int
+	Args []string
 }
 
 func ParseFlags() (Flags, error) {
@@ -25,6 +26,7 @@ func ParseFlags() (Flags, error) {
 	flags := Flags{
 		Host: stringValue(host),
 		Port: intValue(port),
+		Args: f.Args(),
 	}
 
 	err := flags.validate()
