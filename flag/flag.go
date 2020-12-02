@@ -19,6 +19,12 @@ func ParseFlags() (Flags, error) {
 	f := flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
 	host := f.String("host", getStringEnv("GOX_HOST", "localhost"), "go examples host")
 	port := f.Int("port", getIntEnv("GOX_PORT", 8080), "go examples port")
+
+	f.Usage = func() {
+		fmt.Fprint(f.Output(), "Usage: flag [flags] [args]\n")
+		f.PrintDefaults()
+	}
+
 	if err := f.Parse(os.Args[1:]); err != nil {
 		return Flags{}, err
 	}
