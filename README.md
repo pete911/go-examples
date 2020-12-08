@@ -2,6 +2,7 @@
 
  - [flag](flag)
  - [logger](logger)
+ - [binary](binary)
 
 ## networking
 
