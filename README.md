@@ -4,6 +4,10 @@
  - [logger](logger)
  - [binary](binary)
 
+## modules
+
+ - [modules](modules)
+
 ## networking
 
 ### network interface
