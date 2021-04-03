@@ -8,6 +8,10 @@
 
  - [modules](modules)
 
+## godoc
+
+- [godoc](godoc)
+
 ## networking
 
 ### network interface
