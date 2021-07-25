@@ -16,25 +16,22 @@ type Flags struct {
 
 func ParseFlags() (Flags, error) {
 
-	f := flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
-	host := f.String("host", getStringEnv("GOX_HOST", "localhost"), "go examples host")
-	port := f.Int("port", getIntEnv("GOX_PORT", 8080), "go examples port")
+	flagSet := flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
+	var flags Flags
 
-	f.Usage = func() {
-		fmt.Fprint(f.Output(), "Usage: flag [flags] [args]\n")
-		f.PrintDefaults()
+	flagSet.StringVar(&flags.Host, "host", getStringEnv("GOX_HOST", "localhost"), "go examples host")
+	flagSet.IntVar(&flags.Port, "port", getIntEnv("GOX_PORT", 8080), "go examples port")
+
+	flagSet.Usage = func() {
+		fmt.Fprint(flagSet.Output(), "Usage: flag [flags] [args]\n")
+		flagSet.PrintDefaults()
 	}
 
-	if err := f.Parse(os.Args[1:]); err != nil {
+	if err := flagSet.Parse(os.Args[1:]); err != nil {
 		return Flags{}, err
 	}
 
-	flags := Flags{
-		Host: stringValue(host),
-		Port: intValue(port),
-		Args: f.Args(),
-	}
-
+	flags.Args = flagSet.Args()
 	err := flags.validate()
 	return flags, err
 }
@@ -70,20 +67,4 @@ func getIntEnv(envName string, defaultValue int) int {
 		return intValue
 	}
 	return defaultValue
-}
-
-func intValue(v *int) int {
-
-	if v == nil {
-		return 0
-	}
-	return *v
-}
-
-func stringValue(v *string) string {
-
-	if v == nil {
-		return ""
-	}
-	return *v
 }
