@@ -32,6 +32,7 @@ fmt.Printf("%04b\n", out)
 
 ## bitwise operators
 ### AND
+extract subset of the bits
 `1010 & 1001 - 1000`
 
 ```
@@ -47,6 +48,7 @@ fmt.Printf("%04b\n", out)
 ```
 
 ### OR
+set subset of the bits
 `1010 | 1001 - 1011`
 
 ```
@@ -62,6 +64,7 @@ fmt.Printf("%04b\n", out)
 ```
 
 ### XOR
+toggle subste of the bits
 `1010 ^ 1001 - 11`
 
 ```
