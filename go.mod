@@ -1,6 +1,6 @@
 module github.com/pete911/go-examples
 
-go 1.17
+go 1.19
 
 require golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871
 
