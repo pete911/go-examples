@@ -1,5 +1,6 @@
 # go-examples
 
+ - [csv/struct tag](csv)
  - [flag](flag)
  - [logger](logger)
  - [binary](binary)
