@@ -12,9 +12,9 @@ func main() {
 		Worker     bool      `csv:"worker"`
 		CreatedAt  time.Time `csv:"created_at"`
 	}{
-		{Name: "Ryan", OtherNames: []string{"John", "Jane"}, Worker: true, CreatedAt: time.Now().AddDate(-20, -3, -5)},
+		{Name: "Ryan", Worker: true, CreatedAt: time.Now().AddDate(-20, -3, -5), OtherNames: []string{"John", "Jane"}},
 		{Name: "John", OtherNames: []string{"Josh", "Ryan"}, Worker: false, CreatedAt: time.Now().AddDate(-4, -7, -5)},
-		{Name: "Emily", OtherNames: []string{"Naomi", "Joseph"}, Worker: true, CreatedAt: time.Now().AddDate(-32, -4, -20)},
+		{OtherNames: []string{"Naomi", "Joseph"}, Worker: true, CreatedAt: time.Now().AddDate(-32, -4, -20), Name: "Emily"},
 	}
 
 	b, err := ToCsv(in)

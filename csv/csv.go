@@ -10,7 +10,7 @@ import (
 )
 
 func ToCsv[T any](in []T) ([]byte, error) {
-	data := table(in)
+	data := toTable(in)
 	if len(data) == 0 {
 		return []byte{}, nil
 	}
@@ -23,7 +23,7 @@ func ToCsv[T any](in []T) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-func table[T any](in []T) [][]string {
+func toTable[T any](in []T) [][]string {
 	if len(in) == 0 {
 		return nil
 	}
